@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="jquery-ui-1.11.1.custom/jquery-ui.min.css">
+<script src="jquery-ui-1.11.1.custom/external/jquery/jquery.js"></script>
+<script src="jquery-ui-1.11.1.custom/jquery-ui.min.js"></script>
+<style >
+    textarea { border: none; }
+</style>
+
+<script>
+
+
+<script>
+$(function(){
+
+$( "#tabs" ).tabs();
+//$( "#accordion" ).accordion({ fillSpace:true });
+ $( "#accordion" ).accordion({ collapsible: true, heightStyle: "content" });
+});
+
+</script>
+
+
+
+
+
+<script>
+
+var correctAnswers = ["1", "1","1","false","true","false", "separation","component","business logic"];
+var actualResponses=[];
+var numAnsweredCorrect=0;
+var score=0;
+var feedback ="";
+function gradeQuiz(theForm){
+	
+		actualResponses[0] = theForm.question1.value;
+		actualResponses[1] = theForm.question2.value;
+		actualResponses[2] = theForm.question3.value;
+		actualResponses[3] = theForm.question4.options[theForm.question4.selectedIndex].text;
+		actualResponses[4] = theForm.question4.options[theForm.question5.selectedIndex].text;
+		actualResponses[5] = theForm.question4.options[theForm.question6.selectedIndex].text;
+		actualResponses[6] = theForm.question7.value.toLowerCase();
+		actualResponses[7] = theForm.question8.value.toLowerCase();
+		actualResponses[8] = theForm.question9.value.toLowerCase();
+		//actualResponses[8] = theForm.question9.value;
+		
+		for(i=0;i<9;i++)
+		{
+		var num =i+1;
+		if(actualResponses[i]== correctAnswers[i])
+		{
+		numAnsweredCorrect++;
+		
+		feedback+= "Question "+num+":  Correct"+ "\n";
+		}
+		
+		else
+		{
+			feedback+= "Question "+num+":  InCorrect"+ "\n";
+		}
+		
+		}
+		score = (numAnsweredCorrect/9)* 100;
+		var message ="Your score is:   " + score.toFixed() + "%" +"/n"+feedback;
+		alert(message);
+		document.getElementById("tabs-2").innerHTML= message;
+		$("#tabs").tabs("option", "active", 1);
+}
+</script>
+</head>
+<body>
+
+<h1>Web Quiz</h1><br>
+<div id="tabs" style="width:100%; height:100%">
+
+	<ul>
+    <li><a href="#tabs-1">Web Quiz</a></li>
+    <li><a href="#tabs-2">Score</a></li>
+    <li><a href="#tabs-3">Answers</a></li>
+  </ul>
+<div id = "tabs-1">
+
+<form name="Form1">
+<h3>Multiple choice (choose one):</h3>
+<p>&nbsp;</p>
+1. Who creates and maintains the web standards?<br>
+<input type="radio" name="question1" value="0">IEEE<br>
+<input type="radio" name="question1" value="0">ISO<br>
+<input type="radio" name="question1" value="1">W3C<br>
+<br>
+http://www.w3schools.com/web/web_standards.asp<br>
+<p>&nbsp;</p>
+2. We can use this property to detect client browser.<br>
+<input type="radio" name="question2" value="1">userAgent<br>
+<input type="radio" name="question2"value="0">appName<br>
+<input type="radio" name="question2" value="0">appVersion<br>
+<br>
+http://www.javascriptkit.com/javatutors/navigator.shtml<br>
+
+<p>&nbsp;</p>
+
+3. DOM refers to <br>
+<input type="radio" name="question3" value="0">Dynamic Object Model<br>
+<input type="radio" name="question3" value="1">Document Object Model<br>
+<input type="radio" name="question3" value="0">Department Operations Manual<br>
+<br>
+<p>&nbsp;</p>
+<h3>True or False:<br></h3>
+<p>&nbsp;</p>
+4. A web application is a website with static pages.<select name="question4" id="ques4">
+<option >select</option>
+<option id="q4a" name="Question4"  value ="0">true</option>
+<option id="q4b"  name="Question4" value="1">false</option>
+</select>
+<br>
+https://sites.google.com/site/it353isu/team-schedules
+<br>slide17
+<p>&nbsp;</p>
+
+
+5. ASP and PHP are server-side scripting languages<select name="question5" id="ques5">
+<option >select</option>
+<option id="q5a" value ="1">true</option>
+<option id="q5b"value ="0">false</option>
+<p>&nbsp;</p>
+</select>
+<p>&nbsp;</p>
+
+6. A servlet is a small java program that runs in the browser<select name="question6" id="ques5">
+<option >select</option>
+<option id="q6a" value ="0">true</option>
+<option id="q6b"value ="1">false</option>
+<p>&nbsp;</p>
+</select>
+http://docs.oracle.com/javaee/6/api/javax/servlet/Servlet.html
+<p>&nbsp;</p>
+
+
+<h3>Fill in the blanks:</h3>
+7. The biggest advantage of three-tier architecture is <input type="text" id ="question7" style ="border:none;  border-bottom: 1px solid ; borderColor: #000066;">
+.<br>
+8. JavaServerFaces (JSF) is a <input type="text" name ="question8" style ="border:none;  border-bottom: 1px solid ; borderColor: #000066;">based framework. 
+<br>Core JavaServerFaces david geary and Horstmann third edition pg. 3<br>
+
+9. The three layers in the three tier architecture are presentation layer,  <input type="text" name="question9" style ="border:none;  border-bottom: 1px solid ; borderColor: #000066;">
+, and the data model. <br>
+<p>&nbsp;</p>
+<input type="button" value="Grade Quiz" onClick="gradeQuiz(this.form)">
+<hr>
+</div>
+
+<div id = "tabs-2"style="width:300px; height:700px;">
+Your Quiz Score:
+</div>
+
+
+<div id = "tabs-3" style="width:300px; height:700px;">
+<div id="accordion">
+<h3>Question 1</h3>
+<div >
+<p>
+ Who creates and maintains the web standards?<br> 
+Correct answer: W3C<br>
+For more information, please see:<a href=" http://www.w3schools.com/web/web_standards.asp">http://www.w3schools.com/web/web_standards.asp</a><br>
+</p>
+</div>
+
+<h3>Question 2</h3>
+<div>
+<p>
+Question 2. We can use this property to detect  client browser.<br> 
+Correct answer: userAgent<br>
+For more information, please see:<a href="http://www.javascriptkit.com/javatutors/navigator.shtml">http://www.javascriptkit.com/javatutors/navigator.shtml<br></a><br>
+</p>
+</div>
+<h3>Question 3</h3>
+<div>
+<p>
+DOM refers to - <br> 
+Correct answer: Document Object Model<br>
+For more information, please see:<a href="http://en.wikipedia.org/wiki/Document_Object_Model">http://en.wikipedia.org/wiki/Document_Object_Model</a><br>
+</p>
+</div>
+
+
+<h3>Question 4</h3>
+<div>
+<p>
+Question 4. A web application is a website with static pages.<br> 
+Correct answer: False<br>
+For more information, please see:<a href="https://sites.google.com/site/it353isu/team-schedules ">https://sites.google.com/site/it353isu/team-schedules  Week of 8/18  PPT-slide 17<br></a><br>
+</p>
+</div>
+
+<h3>Question 5</h3>
+<div>
+<p>
+Question 5. ASP and PHP are server-side scripting languages<br> 
+Correct answer: True<br>
+For more information, please see:<a href="http://www.w3schools.com/web/web_scripting.asp ">http://www.w3schools.com/web/web_scripting.asp<br></a><br>
+</p>
+</div>
+
+
+<h3>Question 6</h3>
+<div>
+<p>
+Question 6. A servlet is a small java program that runs in the browser<br> 
+Correct answer: False<br>
+For more information, please see:<a href="http://docs.oracle.com/javaee/6/api/javax/servlet/Servlet.html">http://docs.oracle.com/javaee/6/api/javax/servlet/Servlet.html<br></a><br>
+</p>
+</div>
+
+<h3>Question 7</h3>
+<div>
+<p>
+Question 7. The biggest advantage of three-tier architecture is ___________<br> 
+Correct answer:Separation<br>
+For more information, please see: 
+<a href="https://sites.google.com/site/it353isu/team-schedules ">https://sites.google.com/site/it353isu/team-schedules  Week of 9/15  PPT-slide 9<br></a><br>
+</p>
+</div>
+<h3>Question 8</h3>
+<div>
+<p>
+Question 8. JavaServerFaces (JSF) is a ____________based framework. <br> 
+Correct answer:Component <br>
+For more information, please see: Core JavaServerFaces by David Geary and Horstmann, third edition pg. 3
+</p>
+</div>
+
+<h3>Question 9</h3>
+<div>
+<p>
+Question 9. The three layers in the three tier architecture are presentation layer,__________   , and the data model. <br> 
+Correct answer:business logic<br>
+For more information, please see: For more information, please see: 
+<a href="https://sites.google.com/site/it353isu/team-schedules ">https://sites.google.com/site/it353isu/team-schedules  Week of 9/15  PPT-slide 5<br></a><br>
+</p>
+</div>
+
+</div><!--end accordion div -->
+</div><!--end div tab3 -->
+</div><!--end div tabs -->
+</form>
+</body>
+</html>
