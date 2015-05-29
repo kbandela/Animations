@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+ $(document).ready(function(){
+$('#button').click(function(){
+
+//location.reload();
+
+setTimeout(spinAnimate, 1000 );
+setTimeout(winner,2000);
+setTimeout(function(){location.reload();}
+, 7000);
+
+
+
+
+});
+});
+
+
+</script>
+
+
+
+<style>
+div {
+    width: 150px;
+    height: 40px;
+    background: lightblue;
+	font-size: 20px;
+  }
+  
+ 
+  .btn
+  {
+  width: 300px;
+    height: 40px;
+	background: lightgreen;
+	font-size: 20px;
+  }
+  
+  .important
+  {
+	font-size:9px;
+  }
+</style>
+<script>
+//select a random number 
+var num= Math.floor((Math.random() * 7 + 1));
+function spinAnimate()
+{
+
+for( var i=1;i<8;i++)
+{
+
+
+var d =document.getElementById(i);
+
+//d.style.transitionDelay = 1000;
+d.style.transform = 'rotateX(3240deg)'; 
+//d.style.backfaceVisibility ="hidden";
+d.style.transitionDuration = '3s';
+
+}
+
+}
+
+//do this for random number that was generated
+function winner(){
+var mes = document.getElementById(num);
+mes.style.transitionDelay = '100s';
+mes.style.transitionDuration = '3s';
+mes.style.align='center';
+mes.style.float='center';
+mes.style.transition= 'all 3s'
+mes.style.transitionProperty = '(fontSize ,left, transform,height,width )';
+mes.style.transform = 'rotateX(3960deg)';
+mes.style.width='600px';
+mes.style.height='100px';
+mes.style.marginLeft='300px';
+mes.style.top='200px';
+mes.style.left='500px';
+mes.style.fontSize = '100px';
+
+//clearQueue().transition({});
+//mes.style.visibility='visible';
+
+}
+
+</script>
+
+<!--for radio button-->
+<script> 
+$(document).ready(function(){
+   $('#radio2').click(function() {
+  // alert("selected");
+       $('#air1').focus();
+});
+
+});
+</script>
+
+<!--check the second radio button when any of the text fields selected-->
+<script>
+$(document).ready(function(){
+  $('#air1').click(function()
+  {
+  $('#radio2').prop('checked',true);
+  })
+});
+
+$(document).ready(function(){
+  $('#air2').click(function()
+  {
+  $('#radio2').prop('checked',true);
+  })
+});
+
+$(document).ready(function(){
+  $('#air3').click(function()
+  {
+  $('#radio2').prop('checked',true);
+  })
+});
+
+
+</script>
+
+<!--validate before submit-->
+<script>
+$(document).ready(function(){
+  $('#submit').click(function()
+  {
+   if(!$('#radio1').is(':checked'))
+   { 
+   
+		if (($('#air1').val()=="")) 
+			{
+				if($('#air2').val()=="") 
+					{
+						if ($('#air3').val()=="")
+	
+							{
+							alert("Please indicate search preference");
+							
+							return false;
+							}
+							
+						else 
+							{
+								var v= $('#air3').val();
+								alert("air 3 is "+ v);
+								return true;
+						
+							}				 	
+							
+							
+					}
+					
+					
+				else 
+					{
+						var v= $('#air2').val();
+						alert("air 2 is "+ v);
+						return true;
+						
+					} 
+					
+			}
+
+
+		else 
+			{
+					var v= $('#air1').val();
+					alert("air 1 is "+ v);
+					return true;
+						
+			} 
+  }
+ else 
+	{
+
+	alert("success");
+	return true;
+	} 
+  
+})
+
+});
+</script>
+
+</head>
+
+
+<body>
+
+<hr>
+<h2>#2. Randomly display a name</h2>
+<div id="2" margin-left: 700px>John Johnson</div>&nbsp;
+<div id ="3">Peter Petersen</div>&nbsp;
+<div id="4" >Will Williams</div>&nbsp;
+<div id ="5">John Johnson</div>&nbsp;
+<div id="6" >Karl Karlton</div>&nbsp;
+<div id ="7">Jack Jackson</div>&nbsp;
+<div id ="1">Matt Matteson</div>&nbsp;
+<div id ="winner" style ="display: none; font-size: 90px; height:200px ;width:500px">Kay</div>
+<p> &nbsp;</P>
+<input type="button" class ="btn" id="button" value="Click here to start display" ">
+<hr>
+<!--display window-->
+<h2>#1. onFocus(), Programmatically check a button </h2>
+<p>&nbsp;</p>
+</td></tr><!--msnavigation--></table><!--msnavigation--><table dir="ltr" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%">
+<p>
+</p>
+<p>&nbsp;</p>
+<br>
+
+</td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><form>Indicate the search preference below:
+ <p><input type=radio name=searchPref id ="radio1" value=all >Search ALL airlines <br><input type=radio id="radio2"
+ name=searchPref value=indiv>Search for ONLY the airline(s): <br><br>&nbsp;&nbsp;&nbsp;&nbsp; Choice 1:
+ &nbsp;<input type=text id ="air1" name=air1 > <br>&nbsp;&nbsp;&nbsp;&nbsp; Choice 2:&nbsp;<input type=text id="air2" name=air2> <br>&nbsp;&nbsp;&nbsp;&nbsp; Choice 3:&nbsp;<input type=text id="air3" name=air3> <p>
+<input type=submit id="submit" value="Search"> </form><!--msnavigation--></td></tr><!--msnavigation--></table>
+
+<hr>
+
+<!--display window-->
+<h2>#3. Select </h2>
+<p>&nbsp;</p>
+
+<select id ="dept" name ="select" onChange="displayDept()" >
+<option id="choose" >Choose a Dept</option>
+	<option id="a" >DeptA </option>
+	<option id="b" >DeptB </option>
+	<option id="c" >DeptC </option>
+	<option id="d" >DeptD </option>
+</select>
+
+<script>
+function displayDept()
+{
+
+var s = document.getElementById('dept');
+var b=s.options[s.selectedIndex].text;
+if (b =="Choose a Dept")
+{
+alert("Please choose a dept");
+}
+//var s = $('select[name="select"]').val();
+else
+{
+var fileName = b+".htm";
+location = fileName;
+}
+}
+</script>
+
+<hr>
+
+<!--end display dept-->
+<!--begin display image in separate window-->
+<h2>#4. display image in separate window</h2>
+
+<p>&nbsp;</p>
+
+
+<input type="button" class ="btn" id="imgButton" value="Click here to see image" ">
+
+<!--end display image in separate window-->
+<hr>
+
+<!--begin display Pizza toppings-->
+<h2>#5. Select - multiple</h2>
+
+<p>&nbsp;</p>
+
+<select id ="pizza" name ="toppings" multiple>
+<option id="choose" >Choose your toppings</option>
+	<option id="p1" >Cheese </option>
+	<option id="p2" >Pepperoni </option>
+	<option id="p3" >Sausage</option>
+	<option id="p4" >Onion </option>
+	<option id="p5" >Tomato </option>
+	
+</select>
+<input type="button" class ="btn" id="orderBtn" value="Click to see your order" onClick="displayOrder()">
+
+<script>
+function displayOrder()
+{
+	var txt ="You have selected these toppings: " ;
+	var s = document.getElementById("pizza");
+	for (var i=0; i<s.length;i++)
+		{
+
+			if(s.options[i].selected)
+			{
+			var t=s.options[i].text;
+			txt+= "\n"+t;
+			}
+		}		
+confirm( txt);
+}
+
+</script>
+
+<!--end pizza toppings-->
+<hr>
+
+<!--begin radio wonders-->
+<h2>#6. Collection of 7 radio objects</h2>
+<form name="form1">
+<input type="radio" id ="wonder1" name="wonders" value="chicago">Chicago<br>
+<input type="radio" id ="wonder2" name="wonders">Boston<br>
+<input type="radio" id ="wonder3" name="wonders">Atlanta<br>
+<input type="radio" id ="wonder4" name="wonders">Madison<br>
+<input type="radio" id ="wonder5" name="wonders">Chicago<br>
+<input type="radio" id ="wonder6" name="wonders">Chicago<br>
+<input type="radio" id ="wonder7" name="wonders">Chicago<br>
+<input type="button" id ="wonderBtn" value="See selected radio button number" onClick ="displayRadioBtnNumber()">
+</form>
+<script>
+function displayRadioBtnNumber()
+
+{
+
+	var r = document.form1.wonders;
+	var chosen = false;
+	for (var i=0;i<r.length;i++)
+	{
+		if(r[i].checked)
+			{
+				alert(i + " "+ r.value);
+				chosen = true;
+			}
+	}
+	if(!chosen)
+	alert("No selection given!");
+}
+</script>
+<!--begin radio wonders-->
+<p class ="important">sflsglsg;s<p>
+<p class ="important">sflsglsg;s<p>
+<p >sflsglsg;s<p>
+<p>&nbsp;</P>
+<input type ="button" id ="bt" value = "change css">
+<script>
+$("p.important").css("background-color", "yellow");
+
+</script>
+<hr>
+</body>
+</html>
+
+
+
+
